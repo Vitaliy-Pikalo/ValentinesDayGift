@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Our Little Love Story 💕</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Floating hearts background -->
+    <div class="floating-hearts" aria-hidden="true"></div>
+
+    <div class="page-wrapper">
+        <!-- 1. ENVELOPE INTRO -->
+        <section id="intro-section" class="section active">
+            <div class="card">
+                <div class="envelope-container">
+                    <div class="envelope" id="envelope">
+                        <div class="envelope-top"></div>
+                        <div class="envelope-bottom"></div>
+                        <div class="envelope-letter">
+                            <span>Open me ❤️</span>
+                        </div>
+                    </div>
+                </div>
+                <p class="hint-text">Tap the envelope to start our little story</p>
+            </div>
+        </section>
+
+        <!-- 2. TYPEWRITER LOVE LETTER (STORY INTRO) -->
+        <section id="letter-section" class="section">
+            <div class="card">
+                <h1 class="section-title">How this all started 💌</h1>
+                <p id="typewriter-text" class="typewriter-text"></p>
+                <button id="letter-continue" class="btn primary" style="display:none;">
+                    Keep going ✨
+                </button>
+            </div>
+        </section>
+
+        <!-- 3. SLIDING PHOTO PUZZLE (MEMORY MOMENT) -->
+        <section id="puzzle-section" class="section">
+            <div class="card">
+                <h1 class="section-title">A slightly chaotic puzzle 🧩</h1>
+                <p class="section-subtitle">
+                    One of our memories, scrambled a bit. Fix it for me?
+                </p>
+                <div id="puzzle-container" class="puzzle-container" aria-label="3 by 3 sliding puzzle"></div>
+                <p id="puzzle-message" class="puzzle-message"></p>
+                <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+                    <button id="puzzle-reshuffle" class="btn ghost small">
+                        Shuffle again 🔁
+                    </button>
+                    <button id="puzzle-skip" class="btn ghost small">
+                        Skip puzzle ⏭️
+                    </button>
+                </div>
+                <button id="puzzle-continue" class="btn primary" style="display:none; margin-top: 10px;">
+                    Continue 💗
+                </button>
+            </div>
+        </section>
+
+        <!-- 4. STORY TIMELINE / MEMORY SECTION -->
+        <section id="timeline-section" class="section">
+            <div class="card">
+                <h1 class="section-title">How “we” happened 🕰️</h1>
+                <p class="section-subtitle">
+                    A tiny timeline of us, from chaos to comfort.
+                </p>
+                <div id="timeline-list" class="timeline-list"></div>
+                <button id="timeline-continue" class="btn primary">
+                    Next: your chaos, my favorite 💕
+                </button>
+            </div>
+        </section>
+
+        <!-- 5. FUN FACTS / INSIDE JOKES -->
+        <section id="fun-section" class="section">
+            <div class="card">
+                <h1 class="section-title">Things that make you, you 💕</h1>
+                <p class="section-subtitle">
+                    Just a few of the little things that live rent-free in my heart.
+                </p>
+                <div class="fun-grid">
+                    <div class="fun-card">
+                        <div class="fun-icon">🦫</div>
+                        <div class="fun-title">Capybaras</div>
+                        <p class="fun-text">Your capybara obsession is iconic and I fully support it.</p>
+                    </div>
+                    <div class="fun-card">
+                        <div class="fun-icon">💆‍♀️</div>
+                        <div class="fun-title">Massages from me</div>
+                        <p class="fun-text">Somehow my hands are now officially your personal massage service.</p>
+                    </div>
+                    <div class="fun-card">
+                        <div class="fun-icon">🌿</div>
+                        <div class="fun-title">Getting high together</div>
+                        <p class="fun-text">Our giggly, slightly chaotic high talks are some of my favorite memories.</p>
+                    </div>
+                    <div class="fun-card">
+                        <div class="fun-icon">🧸</div>
+                        <div class="fun-title">Stuffed animals</div>
+                        <p class="fun-text">Your bed is 40% pillows, 40% plushies, 20% you. Perfect ratio.</p>
+                    </div>
+                    <div class="fun-card">
+                        <div class="fun-icon">🥤</div>
+                        <div class="fun-title">Coke Cola</div>
+                        <p class="fun-text">You and your Coke Cola era… I swear you’re mostly carbonation at this point.</p>
+                    </div>
+                </div>
+                <button id="fun-continue" class="btn primary">
+                    Reasons I’m in love with you 💖
+                </button>
+            </div>
+        </section>
+
+        <!-- 6. REASONS I LOVE YOU GENERATOR -->
+        <section id="reasons-section" class="section">
+            <div class="card">
+                <h1 class="section-title">Reasons I love you 💞</h1>
+                <p class="section-subtitle">
+                    Press the button. I bet you can’t run out of reasons before I do.
+                </p>
+                <div id="reason-display" class="reason-display">
+                    Tap the button to see a reason 💕
+                </div>
+                <button id="reason-button" class="btn primary">
+                    Give me a reason 💖
+                </button>
+                <button id="reasons-continue" class="btn primary" style="display:none;">
+                    Final question… 🌹
+                </button>
+            </div>
+        </section>
+
+        <!-- 7. FINAL QUESTION (BIG FINALE) -->
+        <section id="final-section" class="section">
+            <div class="card final-card">
+                <h1 class="section-title big-title">Will you be my Valentine? 💘</h1>
+                <p class="section-subtitle">
+                    Warning: saying yes may cause permanent cuddles, back rubs, and stolen blankets.
+                </p>
+                <div class="final-buttons">
+                    <button id="yes-button" class="btn primary big-btn">
+                        YES ❤️
+                    </button>
+                    <button id="no-button" class="btn ghost big-btn runaway">
+                        NO 😈
+                    </button>
+                </div>
+                <p id="final-message" class="final-message"></p>
+            </div>
+        </section>
+    </div>
+
+    <!-- Confetti container -->
+    <div id="confetti-container" aria-hidden="true"></div>
+
+    <!-- Background music (put your mp3 inside assets/music/, e.g. song.mp3) -->
+    <audio id="bg-music" src="assets/music/song.mp3" loop></audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
