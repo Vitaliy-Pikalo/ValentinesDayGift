@@ -19,11 +19,11 @@
 // assets/photos/photo4.png
 // (you can change names, just keep the same format below)
 const photos = [
-    "assets/photos/photo1.jpg",
-    "assets/photos/photo2.jpg",
-    "assets/photos/photo3.jpg",
-    "assets/photos/photo4.jpg"
-  ];
+    "assets/photos/photo1.jpg.JPG",
+    "assets/photos/photo2.jpg.jpg",
+    "assets/photos/photo3.jpg.jpg",
+    "assets/photos/photo4.jpg.jpg"
+];
 
 // Editable story intro for typewriter
 const loveLetterText = `
