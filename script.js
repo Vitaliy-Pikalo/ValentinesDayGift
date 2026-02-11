@@ -460,30 +460,47 @@ function runawayButton(event) {
     if (!noBtn) return;
 
     const rect = noBtn.getBoundingClientRect();
-
+    
+    // Check if cursor is near the button (within 200px for better detection)
     const dx = event.clientX - (rect.left + rect.width / 2);
     const dy = event.clientY - (rect.top + rect.height / 2);
     const distance = Math.sqrt(dx * dx + dy * dy);
-    if (distance > 160) return;
+    
+    // Only move if cursor is getting close (within 200px)
+    if (distance > 200) return;
 
     runawayCount += 1;
     noHoverCount += 1;
 
     const containerRect = document.body.getBoundingClientRect();
+    const btnWidth = rect.width;
+    const btnHeight = rect.height;
 
-    const maxX = containerRect.width - rect.width - 16;
-    const maxY = containerRect.height - rect.height - 16;
+    // Calculate safe boundaries (keep button fully visible)
+    const maxX = containerRect.width - btnWidth - 20;
+    const maxY = containerRect.height - btnHeight - 20;
 
-    const randomX = Math.max(8, Math.random() * maxX);
-    const randomY = Math.max(60, Math.random() * maxY);
+    // Generate random position, avoiding current position
+    let randomX, randomY;
+    let attempts = 0;
+    do {
+        randomX = Math.max(20, Math.random() * maxX);
+        randomY = Math.max(80, Math.random() * maxY); // Keep away from top
+        attempts++;
+    } while (attempts < 10 && Math.abs(randomX - rect.left) < 100 && Math.abs(randomY - rect.top) < 100);
 
+    // Apply new position with smooth transition
+    noBtn.style.transition = "left 0.3s ease-out, top 0.3s ease-out, transform 0.3s ease-out";
     noBtn.style.position = "fixed";
     noBtn.style.left = `${randomX}px`;
     noBtn.style.top = `${randomY}px`;
+    noBtn.style.zIndex = "1000"; // Make sure it's on top
 
-    const scale = Math.max(0.65, 1 - runawayCount * 0.06);
+    // Shrink slightly each time (down to a minimum)
+    const scale = Math.max(0.7, 1 - runawayCount * 0.05);
     noBtn.style.transform = `scale(${scale})`;
 
+    // Change text based on hover count
     if (noHoverCount >= 5) {
         const textIndex = Math.floor(Math.random() * capyNoTexts.length);
         noBtn.textContent = capyNoTexts[textIndex];
@@ -896,8 +913,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const noButton = document.getElementById("no-button");
     if (noButton) {
-        document.addEventListener("mousemove", runawayButton);
-        noButton.addEventListener("mouseenter", runawayButton);
+        // Track mouse movement globally to detect when cursor approaches button
+        document.addEventListener("mousemove", (e) => {
+            runawayButton(e);
+        });
+        
+        // Also trigger when mouse directly enters the button
+        noButton.addEventListener("mouseenter", (e) => {
+            runawayButton(e);
+        });
+        
+        // Prevent clicking the button (it should always run away)
+        noButton.addEventListener("click", (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            runawayButton(e);
+        });
     }
 
     initFloatingHearts();
